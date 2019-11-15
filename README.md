@@ -1,0 +1,2 @@
+# oop
+belajar konsep oop 
