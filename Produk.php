@@ -5,18 +5,14 @@ class Produk
     public  $judul,
         $penerbit,
         $penulis,
-        $harga,
-        $halaman,
-        $waktuMain;
+        $harga;
 
-    public function __construct($judul = "judul", $penerbit = "penerbit", $penulis = "penulis", $harga = 0, $halaman = 0, $waktuMain = 0)
+    public function __construct($judul = "judul", $penerbit = "penerbit", $penulis = "penulis", $harga = 0)
     {
         $this->judul    = $judul;
         $this->penerbit = $penerbit;
         $this->penulis  = $penulis;
         $this->harga    = $harga;
-        $this->halaman  = $halaman;
-        $this->waktuMain = $waktuMain;
     }
 
     public function getLabel()
@@ -43,6 +39,14 @@ class cetakProduk
 
 class Komik extends Produk
 {
+    public $halaman;
+
+    public function __construct($judul = "judul", $penerbit = "penerbit", $penulis = "penulis", $harga = 0, $halaman = 0)
+    {
+        parent::__construct($judul, $penerbit, $penulis, $harga);
+        $this->halaman  = $halaman;
+    }
+
     public function getInfoProduk()
     {
         $str = "Komik : " . parent::getInfoProduk() . " - {$this->halaman} Halaman";
@@ -52,6 +56,14 @@ class Komik extends Produk
 
 class Game extends Produk
 {
+    public $waktuMain;
+
+    public function __construct($judul = "judul", $penerbit = "penerbit", $penulis = "penulis", $harga = 0, $waktuMain = 0)
+    {
+        parent::__construct($judul, $penerbit, $penulis, $harga);
+        $this->waktuMain  = $waktuMain;
+    }
+
     public function getInfoProduk()
     {
         /* parent::getInfoProduk() contoh overriding */
@@ -62,7 +74,7 @@ class Game extends Produk
 
 
 $produk1 = new Komik("Naruto", "Masahi", "Shunen", 30000, 100);
-$produk2 = new Game("Good Of War", "Ceo", "Cantik", 250000, 0, 5);
+$produk2 = new Game("Good Of War", "Ceo", "Cantik", 250000, 5);
 
 echo $produk1->getInfoProduk();
 echo '<br>';
