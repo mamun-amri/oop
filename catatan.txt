@@ -2,3 +2,6 @@ visibility
 1. public bisa di akses disemua class dan dapat merubah nilainya dari luar setelah mengkonstrukor
 2. protected hanya bisa di akses di classnya dan keterunannya (parent dan child)
 3. private hanya class yang bersangkutan atau hanya oleh class itu sendiri
+
+static dia mempunya nilai yang tetap walaupun dibuat kerkali" object nya contoh di file static.php
+atau di sebut juga tidak direset dimulai dari nilai defaultnya
