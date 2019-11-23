@@ -4,8 +4,10 @@ class Produk
     // property
     public  $judul,
         $penerbit,
-        $penulis,
-        $harga;
+        $penulis;
+
+    protected $diskon = 0;
+    protected $harga;
 
     public function __construct($judul = "judul", $penerbit = "penerbit", $penulis = "penulis", $harga = 0)
     {
@@ -20,6 +22,11 @@ class Produk
         return "$this->penulis, $this->penerbit";
     }
 
+    public function getHarga()
+    {
+        return $this->harga - ($this->harga * $this->diskon / 100);
+    }
+
     public function getInfoProduk()
     {
         $str = "{$this->judul}|{$this->getLabel()} (Rp.{$this->harga})";
@@ -28,14 +35,14 @@ class Produk
 }
 
 // contoh object type
-class cetakProduk
-{
-    public function cetak(Produk $produk)
-    {
-        $str = "{$produk->judul}|{$produk->getLabel()} (Rp.{$produk->harga})";
-        return $str;
-    }
-}
+// class cetakProduk
+// {
+//     public function cetak(Produk $produk)
+//     {
+//         $str = "{$produk->judul}|{$produk->getLabel()} (Rp.{$produk->harga})";
+//         return $str;
+//     }
+// }
 
 class Komik extends Produk
 {
@@ -64,6 +71,11 @@ class Game extends Produk
         $this->waktuMain  = $waktuMain;
     }
 
+    public function setDiskon($diskon)
+    {
+        return $this->diskon = $diskon;
+    }
+
     public function getInfoProduk()
     {
         /* parent::getInfoProduk() contoh overriding */
@@ -80,7 +92,9 @@ echo $produk1->getInfoProduk();
 echo '<br>';
 echo $produk2->getInfoProduk();
 echo '<br>';
+$produk2->setDiskon(50);
+echo $produk2->getHarga();
 // example Object type
-echo '<hr>';
-$cetakProduk = new cetakProduk();
-echo $cetakProduk->cetak($produk1);
+// echo '<hr>';
+// $cetakProduk = new cetakProduk();
+// echo $cetakProduk->cetak($produk1);
