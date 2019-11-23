@@ -24,3 +24,18 @@ $obj1 = new Contoh_static();
 echo $obj1::halo() . "<br>";
 echo $obj1::halo() . "<br>";
 echo $obj1::halo() . "<br>";
+echo '<hr>';
+// contoh menggunakan constanta
+
+class Coba
+{
+    const NAMA = "Mamun Amri",
+        UMUR = 22;
+    public function nama()
+    {
+        return self::NAMA;
+    }
+}
+echo "nama : " . Coba::nama();
+echo '<br>';
+echo "umur : " . Coba::UMUR;
