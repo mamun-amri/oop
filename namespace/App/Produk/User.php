@@ -1,5 +1,5 @@
 <?php
-
+// namespace
 namespace App\Produk;
 
 class User
